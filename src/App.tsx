@@ -23,10 +23,16 @@ const Container = styled.div`
     flex-direction: row;
     padding: 0;
     margin: 0;
+    @media(max-width: 875px) {
+        flex-direction: column;
+    }
 `;
 
 const Left = styled.div`
     width: 50%;
+    @media(max-width: 875px) {
+        width: 100%;
+    }
 `;
 
 const Right = styled.div`

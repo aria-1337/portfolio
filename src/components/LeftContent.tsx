@@ -14,7 +14,11 @@ export default function LeftContent() {
 }
 
 const Container = styled.div`
-    padding: 80px 0px 0px 80px;
+    display: flex;
+    @media (max-width: 875px) {
+        padding: 10% 10% 0% 10%;
+    }
+    padding: 10% 25% 0% 25%;
     position: sticky;
     top: 20px;
 `;
@@ -22,6 +26,7 @@ const Container = styled.div`
 const InfoBlock = styled.div`
     display: flex;
     flex-direction: column;
+    max-width: 400px;
 `;
 
 const Name = styled.h1`
