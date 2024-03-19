@@ -110,7 +110,7 @@ const InfoBlock = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0% 0% 3% 0%;
-    border-bottom: 1px solid whitesmoke;
+    border-bottom: 1px solid #7C8FB5;
 `;
 
 const Name = styled.h1`
@@ -152,9 +152,10 @@ const LanguageImg = styled.img`
 const ContactContainer = styled.div`
     display: flex;
     flex-direction: column;
-    border-top: 1px solid whitesmoke;
-    padding-top: 20px;
-    width: 70%;
+    border-top: 1px solid #7C8FB5;
+    border-bottom: 1px solid #7C8FB5;
+    padding: 20px 0px;
+    width: 100%;
     @media(max-width: 1000px) {
         flex-direction: row;
         width: 100%;
