@@ -1,3 +1,4 @@
+/* TODO: convert this into global styles with styled-components */
 body {
   margin: 0;
   padding: 0;
@@ -8,6 +9,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #0F172A;
   color: #DAE2EF;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 /* seconday-color: 91A1B9 */
 

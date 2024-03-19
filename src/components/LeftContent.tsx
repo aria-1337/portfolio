@@ -153,13 +153,13 @@ const ContactContainer = styled.div`
     display: flex;
     flex-direction: column;
     border-top: 1px solid #7C8FB5;
-    border-bottom: 1px solid #7C8FB5;
     padding: 20px 0px;
     width: 100%;
     @media(max-width: 1000px) {
         flex-direction: row;
         width: 100%;
         align-items: center;
+        border-bottom: 1px solid #7C8FB5;
     }
 `;
 

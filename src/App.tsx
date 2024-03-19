@@ -23,11 +23,14 @@ export default function App() {
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 10% 0% 0% 0%;
+    padding: 5% 0% 0% 0%;
     margin: 0;
     @media(max-width: 1000px) {
         flex-direction: column;
+        overflow-y: scroll;
     }
+    height: calc(100vh - 70px);
+    min-height: 100%;
 `;
 
 const Left = styled.div`
@@ -42,6 +45,8 @@ const Left = styled.div`
 
 const Right = styled.div`
     width: 50%;
+    height: calc(100vh-70px);
+    min-height: 100%;
     @media(max-width: 1000px) {
         width: 80%;
     }
