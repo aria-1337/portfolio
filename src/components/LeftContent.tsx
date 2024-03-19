@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import useDimensions from '../hooks/Dimensions';
 
 export default function LeftContent() {
+    const { width, height } = useDimensions();
     return (
         <Container>
             <InfoBlock>
@@ -42,9 +44,9 @@ export default function LeftContent() {
             <ContactContainer>
                 <SubTitle>Connect With Me</SubTitle>
                 <AbstractSpacer h={'20'} w={'0'} />
-                <MediaBtn src={'github.svg'} link={''} text={'github | @aria-1337'} enabled={true} />
-                <MediaBtn src={'linkedin.png'} link={''} text={'LinkedIn | @arialopez'} enabled={true} />
-                <MediaBtn src={'gitlab.png'} link={''} text={'gitlab | @arialopez'} enabled={false} />
+                <MediaBtn src={'github.svg'} link={''} text={'github | @aria-1337'} enabled={true} width={width} />
+                <MediaBtn src={'linkedin.png'} link={''} text={'LinkedIn | @arialopez'} enabled={true} width={width}/>
+                <MediaBtn src={'gitlab.png'} link={''} text={'gitlab | @arialopez'} enabled={false} width={width} />
             </ContactContainer>
         </Container>
     );
@@ -70,8 +72,9 @@ interface MediaBtnProps {
     src: string;
     text: string;
     enabled: boolean;
+    width: number;
 }
-const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled }) => {
+const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled, width }) => {
     // TODO: Tooltip hover
     const direct = () => {
         window.open(link, '_blank')?.focus();
@@ -79,11 +82,10 @@ const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled }) => {
     return (
         <MediaButton onClick={() => direct()}>
             <MediaImg src={process.env.PUBLIC_URL + src}/>
-            <MediaText decoration={enabled ? '' : 'line-through'}>{text}</MediaText>
+            { width <= 1000 ? (null) : (<MediaText decoration={enabled ? '' : 'line-through'}>{text}</MediaText>) }
         </MediaButton>
     );
 }
-
 
 const AbstractSpacer = styled.div<{ h: string, w: string }>`
     min-height: ${props => props.h}px;
@@ -104,7 +106,6 @@ const SubTitle = styled.h4`
 const InfoBlock = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 400px;
     margin: 0% 0% 3% 0%;
     border-bottom: 1px solid whitesmoke;
 `;
@@ -151,6 +152,11 @@ const ContactContainer = styled.div`
     border-top: 1px solid whitesmoke;
     padding-top: 20px;
     width: 70%;
+    @media(max-width: 1000px) {
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+    }
 `;
 
 const MediaButton = styled.button`
@@ -166,12 +172,18 @@ const MediaButton = styled.button`
     &:hover {
         color: #663791;
     }
+    @media(max-width: 1000px) {
+        margin: 0% 1%;
+    }
 `;
 
 const MediaImg = styled.img`
     width: auto;
     height: 25px;
     margin-right: 5px;
+    @media(max-width: 1000px) {
+        max-width: 25px;
+    }
 `;
 
 const MediaText = styled.p<{ decoration: string }>`
