@@ -101,6 +101,9 @@ const Container = styled.div`
 
 const SubTitle = styled.h4`
     margin: 0;
+    @media(max-width: 1000px) {
+        margin-right: 5px;
+    }
 `;
 
 const InfoBlock = styled.div`
@@ -183,6 +186,7 @@ const MediaImg = styled.img`
     margin-right: 5px;
     @media(max-width: 1000px) {
         max-width: 25px;
+        margin-right: 0px;
     }
 `;
 
