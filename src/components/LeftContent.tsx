@@ -10,6 +10,7 @@ export default function LeftContent() {
                 <Statement>I believe in mission driven companies, collaborative teams, and products that make our end users lives better.</Statement>
             </InfoBlock>
 
+            <SubTitle>Technologies</SubTitle>
             <p>Javascript Stack</p>
             <LanguageContainer>
                 <LImg src={'js.jpg'} tooltip={'Javascript'} />
@@ -35,6 +36,16 @@ export default function LeftContent() {
                 <LImg src={'go.png'} tooltip={'GoLang'} />
                 <LImg src={'csharp.png'} tooltip={'C Sharp'} />
             </LanguageContainer>
+
+            <AbstractSpacer h={'40'} w={'0'} />
+
+            <ContactContainer>
+                <SubTitle>Connect With Me</SubTitle>
+                <AbstractSpacer h={'20'} w={'0'} />
+                <MediaBtn src={'github.svg'} link={''} text={'github | @aria-1337'} enabled={true} />
+                <MediaBtn src={'linkedin.png'} link={''} text={'LinkedIn | @arialopez'} enabled={true} />
+                <MediaBtn src={'gitlab.png'} link={''} text={'gitlab | @arialopez'} enabled={false} />
+            </ContactContainer>
         </Container>
     );
 }
@@ -54,15 +65,48 @@ const LImg: React.FC<LImgProps> = ({ src, tooltip }) => {
     );
 }
 
+interface MediaBtnProps {
+    link: string;
+    src: string;
+    text: string;
+    enabled: boolean;
+}
+const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled }) => {
+    // TODO: Tooltip hover
+    const direct = () => {
+        window.open(link, '_blank')?.focus();
+    }
+    return (
+        <MediaButton onClick={() => direct()}>
+            <MediaImg src={process.env.PUBLIC_URL + src}/>
+            <MediaText decoration={enabled ? '' : 'line-through'}>{text}</MediaText>
+        </MediaButton>
+    );
+}
+
+
+const AbstractSpacer = styled.div<{ h: string, w: string }>`
+    min-height: ${props => props.h}px;
+    width: ${props => props.w}px;
+`;
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    height: 100%;
+    justify-content: bottom;
+`;
+
+const SubTitle = styled.h4`
+    margin: 0;
 `;
 
 const InfoBlock = styled.div`
     display: flex;
     flex-direction: column;
     max-width: 400px;
+    margin: 0% 0% 3% 0%;
+    border-bottom: 1px solid whitesmoke;
 `;
 
 const Name = styled.h1`
@@ -99,4 +143,38 @@ const LanguageImg = styled.img`
     padding: 5px;
     border-radius: 5px;
     margin: 2px;
+`;
+
+const ContactContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid whitesmoke;
+    padding-top: 20px;
+    width: 70%;
+`;
+
+const MediaButton = styled.button`
+    background-color: white;
+    border-radius: 10px;
+    border: transparent;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5%;
+    max-width: 350px;
+    cursor: pointer;
+    &:hover {
+        color: #663791;
+    }
+`;
+
+const MediaImg = styled.img`
+    width: auto;
+    height: 25px;
+    margin-right: 5px;
+`;
+
+const MediaText = styled.p<{ decoration: string }>`
+    font-weight: bold;
+    text-decoration: ${props => props.decoration};
 `;

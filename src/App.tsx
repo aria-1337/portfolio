@@ -32,6 +32,7 @@ const Container = styled.div`
 
 const Left = styled.div`
     width: 50%;
+    height: 100%;
     padding-left: 20%;
     @media(max-width: 1000px) {
         width: 80%;
