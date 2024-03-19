@@ -5,7 +5,7 @@ export default function RightContent() {
     return (
         <Container>
             <Bio>
-                <BioContent>During Covid I decided to pick up programming to make some simple web apps to organize data. I quickly fell in love with it and attended <Link href="https://www.galvanize.com/explore-hack-reactor-coding-bootcamps/" target="_blank">Hack Reactor</Link> to learn full-stack development. After graduating I stayed on to help a new cohort of programmers along their learning journey!<br></br><br></br> I was lucky to then join <Link target="_blank" href="https://www.pando.com/">Pando, an amazing start-up</Link> as a fullstack developer. My main focus was working on building out and maintaing the backend infastructure and API. I also was able to work on team sprints helping out with front-end performance and styling.</BioContent>
+                <BioContent>During Covid I decided to pick up programming to make some simple web apps to organize data. I quickly fell in love with it and attended <Link href="https://www.galvanize.com/explore-hack-reactor-coding-bootcamps/" target="_blank">Hack Reactor</Link> to learn full-stack development. After graduating I stayed on to help a new cohort of programmers along their learning journey!<br></br><br></br> I was lucky to then join <Link target="_blank" href="https://www.pando.com/">Pando, an amazing start-up</Link> as a fullstack developer. My main focus was working on building out and maintaing the backend infastructure and API. I also was able to work on team sprints helping out with front-end performance and styling.<br></br><br></br> My focus lately has been expanding my toolset in both backend and frontend technologies, and <Link>I am currently looking to join a new team!</Link></BioContent>
     
             </Bio>
         </Container>
@@ -24,6 +24,9 @@ const SectionTitle = styled.h3`
 
 const Container = styled.div`
     width: 100%;
+    @media(max-width: 1000px) {
+        margin-top: 5%;
+    }
 `;
 
 const Bio = styled.div`
