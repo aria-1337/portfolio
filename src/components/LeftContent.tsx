@@ -15,12 +15,6 @@ export default function LeftContent() {
 
 const Container = styled.div`
     display: flex;
-    @media (max-width: 875px) {
-        padding: 10% 10% 0% 10%;
-    }
-    padding: 10% 25% 0% 25%;
-    position: sticky;
-    top: 20px;
 `;
 
 const InfoBlock = styled.div`
