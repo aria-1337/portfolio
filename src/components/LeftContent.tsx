@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import useDimensions from '../hooks/Dimensions';
+import ToolTip from './ToolTip';
 
 export default function LeftContent() {
     const { width, height } = useDimensions();
+    const pub = process.env.PUBLIC_URL;
     return (
         <Container>
             <InfoBlock>
@@ -15,28 +17,73 @@ export default function LeftContent() {
             <SubTitle>Technologies</SubTitle>
             <p>Javascript Stack</p>
             <LanguageContainer>
-                <LImg src={'js.jpg'} tooltip={'Javascript'} />
-                <LImg src={'ts.svg'} tooltip={'Typescript'} />
-                <LImg src={'node.png'} tooltip={'Node.JS'} />
-                <LImg src={'nextjs.png'} tooltip={'Next.JS'} />
-                <LImg src={'express.png'} tooltip={'Express js'} />
-                <LImg src={'react.png'} tooltip={'React.JS'} />
-                <LImg src={'vue.png'} tooltip={'Vue.JS'} />
-                <LImg src={'redux.svg'} tooltip={'Redux.JS'} />
+                <ToolTip hoverItems={[<TipText>Javascript</TipText>]}>
+                    <LanguageImg src={pub + 'js.jpg'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>Typescript</TipText>]}>
+                    <LanguageImg src={pub + 'ts.svg'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>Node.JS</TipText>]}>
+                    <LanguageImg src={pub + 'node.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>Next.JS</TipText>]}>
+                    <LanguageImg src={pub + 'nextjs.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>Express.JS</TipText>]}>
+                    <LanguageImg src={pub + 'express.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>React.JS</TipText>]}>
+                    <LanguageImg src={pub + 'react.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>Vue.JS</TipText>]}>
+                    <LanguageImg src={pub + 'vue.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>Redux.JS</TipText>]}>
+                    <LanguageImg src={pub + 'redux.svg'} />
+                </ToolTip>
             </LanguageContainer>
             <p>Databases + Infastructure</p>
             <LanguageContainer>
-                <LImg src={'psql.svg'} tooltip={'PostgresSQL'} />
-                <LImg src={'redis.svg'} tooltip={'Redis'} />
-                <LImg src={'mongo.png'} tooltip={'MongoDB'} />
-                <LImg src={'aws.png'} tooltip={'AWS'} />
-                <LImg src={'gitlab.png'} tooltip={'Gitlab CI/CD'} />
+                <ToolTip hoverItems={[<TipText>PostgreSQL</TipText>]}>
+                    <LanguageImg src={pub + 'psql.svg'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>Redis</TipText>]}>
+                    <LanguageImg src={pub + 'redis.svg'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>MongoDB</TipText>]}>
+                    <LanguageImg src={pub + 'mongo.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>AWS</TipText>]}>
+                    <LanguageImg src={pub + 'aws.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>Gitlab CI/CD</TipText>]}>
+                    <LanguageImg src={pub + 'gitlab.png'} />
+                </ToolTip>
             </LanguageContainer>
             <p>Backend + Tooling Languages</p>
             <LanguageContainer>
-                <LImg src={'python.png'} tooltip={'Python'} />
-                <LImg src={'go.png'} tooltip={'GoLang'} />
-                <LImg src={'csharp.png'} tooltip={'C Sharp'} />
+                <ToolTip hoverItems={[<TipText>Python</TipText>]}>
+                    <LanguageImg src={pub + 'python.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>GoLang</TipText>]}>
+                    <LanguageImg src={pub + 'go.png'} />
+                </ToolTip>
+
+                <ToolTip hoverItems={[<TipText>C Sharp</TipText>]}>
+                    <LanguageImg src={pub + 'csharp.png'} />
+                </ToolTip>
             </LanguageContainer>
 
             <AbstractSpacer h={'40'} w={'0'} />
@@ -54,15 +101,11 @@ export default function LeftContent() {
 
 interface LImgProps {
     src: string;
-    tooltip: string;
 }
-const LImg: React.FC<LImgProps> = ({ src, tooltip }) => {
+const LImg: React.FC<LImgProps> = ({ src }) => {
     // TODO: Tooltip hover
     return (
         <div>
-            <LanguageImg id={src} 
-            src={process.env.PUBLIC_URL + src}
-            data-tip=""/>
         </div>
     );
 }
@@ -87,6 +130,10 @@ const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled, width, he
         </MediaButton>
     );
 }
+
+ const TipText = styled.p`
+    margin: 0;
+`;
 
 const AbstractSpacer = styled.div<{ h: string, w: string }>`
     min-height: ${props => props.h}px;
