@@ -23,7 +23,7 @@ export default function App() {
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 5% 0% 0% 0%;
+    padding: 2% 0% 0% 0%;
     margin: 0;
     @media(max-width: 1000px) {
         flex-direction: column;
@@ -52,5 +52,15 @@ const Right = styled.div`
     }
     padding-right: 15%;
     padding-left: 5%; 
+    ::-webkit-scrollbar-thumb {
+        background-color: whitesmoke;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        background-color: #7C8FB5;
+        border-radius: 10px;
+    }
 `;
 

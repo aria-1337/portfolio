@@ -43,6 +43,7 @@ const Container = styled.div`
     }
     overflow-y: scroll;
     height: 100%;
+    padding-right: 15px;
 `;
 
 const Bio = styled.div`

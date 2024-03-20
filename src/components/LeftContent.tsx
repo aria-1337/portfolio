@@ -44,9 +44,9 @@ export default function LeftContent() {
             <ContactContainer>
                 <SubTitle>Connect With Me</SubTitle>
                 <AbstractSpacer h={'20'} w={'0'} />
-                <MediaBtn src={'github.svg'} link={''} text={'github | @aria-1337'} enabled={true} width={width} />
-                <MediaBtn src={'linkedin.png'} link={''} text={'LinkedIn | @arialopez'} enabled={true} width={width}/>
-                <MediaBtn src={'gitlab.png'} link={''} text={'gitlab | @arialopez'} enabled={false} width={width} />
+                <MediaBtn src={'github.svg'} link={''} text={'github | @aria-1337'} enabled={true} width={width} height={height} />
+                <MediaBtn src={'linkedin.png'} link={''} text={'LinkedIn | @arialopez'} enabled={true} width={width} height={height} />
+                <MediaBtn src={'gitlab.png'} link={''} text={'gitlab | @arialopez'} enabled={false} width={width} height={height} />
             </ContactContainer>
         </Container>
     );
@@ -73,8 +73,9 @@ interface MediaBtnProps {
     text: string;
     enabled: boolean;
     width: number;
+    height: number;
 }
-const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled, width }) => {
+const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled, width, height }) => {
     // TODO: Tooltip hover
     const direct = () => {
         window.open(link, '_blank')?.focus();
@@ -82,7 +83,7 @@ const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled, width }) 
     return (
         <MediaButton onClick={() => direct()}>
             <MediaImg src={process.env.PUBLIC_URL + src}/>
-            { width <= 1000 ? (null) : (<MediaText decoration={enabled ? '' : 'line-through'}>{text}</MediaText>) }
+            { width <= 1000 || height <= 800 ? (null) : (<MediaText decoration={enabled ? '' : 'line-through'}>{text}</MediaText>) }
         </MediaButton>
     );
 }
@@ -161,6 +162,12 @@ const ContactContainer = styled.div`
         align-items: center;
         border-bottom: 1px solid #7C8FB5;
     }
+    @media (max-height: 800px) {
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        border-bottom: 1px solid #7C8FB5;
+    }
 `;
 
 const MediaButton = styled.button`
@@ -177,6 +184,9 @@ const MediaButton = styled.button`
         color: #663791;
     }
     @media(max-width: 1000px) {
+        margin: 0% 1%;
+    }
+    @media(max-height: 800px) {
         margin: 0% 1%;
     }
 `;
