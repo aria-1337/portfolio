@@ -91,8 +91,8 @@ export default function LeftContent() {
             <ContactContainer>
                 <SubTitle>Connect With Me</SubTitle>
                 <AbstractSpacer h={'20'} w={'0'} />
-                <MediaBtn src={'github.svg'} link={''} text={'github | @aria-1337'} enabled={true} width={width} height={height} />
-                <MediaBtn src={'linkedin.png'} link={''} text={'LinkedIn | @arialopez'} enabled={true} width={width} height={height} />
+                <MediaBtn src={'github.svg'} link={'https://github.com/aria-1337'} text={'github | @aria-1337'} enabled={true} width={width} height={height} />
+                <MediaBtn src={'linkedin.png'} link={'https://www.linkedin.com/in/arialopez/'} text={'LinkedIn | @arialopez'} enabled={true} width={width} height={height} />
                 <MediaBtn src={'gitlab.png'} link={''} text={'gitlab | @arialopez'} enabled={false} width={width} height={height} />
             </ContactContainer>
         </Container>
@@ -124,7 +124,7 @@ const MediaBtn: React.FC<MediaBtnProps> = ({ src, link, text, enabled, width, he
         window.open(link, '_blank')?.focus();
     }
     return (
-        <MediaButton onClick={() => direct()}>
+        <MediaButton onClick={() => direct()} enabled={enabled.toString()}>
             <MediaImg src={process.env.PUBLIC_URL + src}/>
             { width <= 1000 || height <= 800 ? (null) : (<MediaText decoration={enabled ? '' : 'line-through'}>{text}</MediaText>) }
         </MediaButton>
@@ -217,7 +217,7 @@ const ContactContainer = styled.div`
     }
 `;
 
-const MediaButton = styled.button`
+const MediaButton = styled.button<{ enabled: string }>`
     background-color: white;
     border-radius: 10px;
     border: transparent;
@@ -226,7 +226,7 @@ const MediaButton = styled.button`
     align-items: center;
     margin-bottom: 5%;
     max-width: 350px;
-    cursor: pointer;
+    cursor: ${props => props.enabled === 'true' ? 'pointer' : 'not-allowed'};
     &:hover {
         color: #663791;
     }

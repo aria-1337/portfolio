@@ -37,6 +37,7 @@ export default function RightContent() {
         </Container>
     );
 }
+// TODO: Add project section when I have more!
 
 const Link = styled.a`
     color: #DAE2EF; 
