@@ -25,12 +25,13 @@ const Container = styled.div`
     flex-direction: row;
     padding: 2% 0% 0% 0%;
     margin: 0;
+    height: calc(100vh - 70px);
+    min-height: 100%;
     @media(max-width: 1000px) {
         flex-direction: column;
         overflow-y: scroll;
+        height: 100vh;
     }
-    height: calc(100vh - 70px);
-    min-height: 100%;
 `;
 
 const Left = styled.div`
@@ -49,6 +50,7 @@ const Right = styled.div`
     min-height: 100%;
     @media(max-width: 1000px) {
         width: 80%;
+        height: 100vh; 
     }
     padding-right: 15%;
     padding-left: 5%; 

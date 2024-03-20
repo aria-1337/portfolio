@@ -54,7 +54,7 @@ const Container = styled.div`
     min-height: 100%;
     @media(max-width: 1000px) {
         margin-top: 5%;
-        overflow-y: hidden;
+        overflow-y: auto;
     }
     overflow-y: scroll;
     height: 100%;
